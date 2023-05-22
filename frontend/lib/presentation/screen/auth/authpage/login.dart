@@ -4,7 +4,9 @@ import 'package:sqaure_project/presentation/constants/appcolors.dart';
 import 'package:sqaure_project/presentation/services/colorConverter.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.nextscreencallback});
+
+  final void Function()? nextscreencallback;
 
   @override
   Widget build(BuildContext context) {
@@ -269,7 +271,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: nextscreencallback,
               child: Text(
                 'Sign Up',
                 style: GoogleFonts.poppins(
