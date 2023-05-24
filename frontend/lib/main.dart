@@ -6,8 +6,10 @@ import 'package:sqaure_project/packages.dart';
 import 'root.dart';
 import 'firebase_options.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.web,
   );

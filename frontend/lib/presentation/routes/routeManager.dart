@@ -10,16 +10,15 @@ class RouteManagerclass {
       GoRoute(
         path: '/',
         builder: (context, state) {
-          return BlocBuilder<AuthBloc, AuthState>(
-            builder: (context, state) {
-              if (state.status == AuthStatus.unautheniticated) {
-                return AuthScreen();
-              }
-              return HomeScreen();
-            },
-          );
+          return const AuthScreen();
         },
-      )
+      ),
+      GoRoute(
+        path: '/home',
+        builder: (context, state) {
+          return const HomeScreen();
+        },
+      ),
     ],
   );
 }

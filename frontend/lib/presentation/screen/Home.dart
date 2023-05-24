@@ -1,64 +1,176 @@
 import 'package:flutter/material.dart';
+import 'package:sqaure_project/packages.dart';
 
 import 'package:sqaure_project/presentation/constants/appcolors.dart';
 
-import '../widgets/widgetExports.dart';
 import 'package:sqaure_project/presentation/services/colorConverter.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          const Center(child: SelectableText('Hello')),
-          Container(
-            width: 142,
-            height: 44,
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            decoration: const BoxDecoration(
-              color: Appcolors.overlaycolor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverToBoxAdapter(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Appcolors.background.toColor(),
+                  border: const Border(
+                    bottom: BorderSide(color: Appcolors.overlaycolor, width: 2),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25,
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: 60,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        //hamburger button
+                        MouseRegion(
+                          cursor: MaterialStateMouseCursor.clickable,
+                          child: Icon(
+                            Icons.menu,
+                            color: Appcolors.secondaryColor.toColor(),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        //search textfield
+                        SizedBox(
+                          width: 350,
+                          height: 35,
+                          child: TextFormField(
+                            style: GoogleFonts.quicksand(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: Appcolors.secondaryColor.toColor(),
+                            ),
+                            cursorColor: Appcolors.secondaryColor.toColor(),
+                            decoration: InputDecoration(
+                              fillColor: Appcolors.overlaycolor,
+                              filled: true,
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 10,
+                              ),
+                              hintText: 'Search',
+                              hintStyle: GoogleFonts.quicksand(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                                color: Appcolors.secondaryColor.toColor(),
+                              ),
+                              enabledBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(30),
+                                ),
+                                borderSide: BorderSide(
+                                  color: Appcolors.overlaycolor,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(30),
+                                ),
+                                borderSide: BorderSide(
+                                  color: Appcolors.secondaryColor.toColor(),
+                                ),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Appcolors.secondaryColor.toColor(),
+                                size: 22.5,
+                              ),
+                              border: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(30),
+                                ),
+                                borderSide: BorderSide(
+                                  color: Appcolors.overlaycolor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    //info
+                    Row(
+                      children: [
+                        SelectableText(
+                          'MEGALODON',
+                          style: GoogleFonts.lustria(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                            color: Appcolors.secondaryColor.toColor(),
+                          ),
+                        ),
+                        MouseRegion(
+                          cursor: MaterialStateMouseCursor.clickable,
+                          child: Icon(
+                            Icons.shopping_cart_outlined,
+                            color: Appcolors.secondaryColor.toColor(),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        MouseRegion(
+                          cursor: MaterialStateMouseCursor.clickable,
+                          child: Icon(
+                            Icons.favorite_outline_rounded,
+                            color: Appcolors.secondaryColor.toColor(),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        MouseRegion(
+                          cursor: MaterialStateMouseCursor.clickable,
+                          child: Icon(
+                            Icons.person,
+                            color: Appcolors.secondaryColor.toColor(),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          ClikableWidget(
-            child: Icon(
-              Icons.shopping_cart_outlined,
-              color: Appcolors.secondaryColor.toColor(),
+          ];
+        },
+        body: Row(
+          children: [
+            //feed and points
+            Container(
+              color: Colors.red,
+              width: 300,
+              height: MediaQuery.of(context).size.height,
             ),
-            tapfunction: () {},
-          ),
-          ClikableWidget(
-            child: Icon(
-              Icons.favorite_border,
-              color: Appcolors.secondaryColor.toColor(),
+            //mainpage
+            Expanded(
+              child: Container(
+                color: Colors.amber,
+                height: MediaQuery.of(context).size.height,
+              ),
             ),
-            tapfunction: () {},
-          ),
-          ClikableWidget(
-            child: Icon(
-              Icons.person,
-              color: Appcolors.secondaryColor.toColor(),
-            ),
-            tapfunction: () {},
-          ),
-        ],
-        bottom: const PreferredSize(
-          preferredSize: Size(double.infinity, 5),
-          child: Divider(
-            color: Appcolors.overlaycolor,
-          ),
+          ],
         ),
       ),
-      body: const Center(
-          child: MouseRegion(
-        cursor: MaterialStateMouseCursor.textable,
-        child: Text('Hello world'),
-      )),
     );
   }
 }
