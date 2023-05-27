@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sqaure_project/buisness/bloc/auth_bloc.dart';
+import 'buisness/AuthBloc/auth_bloc.dart';
 import 'package:sqaure_project/buisness/blocObsrver.dart';
 import 'package:sqaure_project/data/Repository/FirebaseAuth.dart';
 import 'package:sqaure_project/packages.dart';
 import 'root.dart';
 import 'firebase_options.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

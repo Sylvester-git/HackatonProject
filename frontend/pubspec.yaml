@@ -43,6 +43,8 @@ dependencies:
   firebase_core: ^2.13.0
   cloud_firestore: 
   url_strategy: ^0.2.0
+  flutter_multi_formatter: ^2.11.1
+  dio: 
 
 dev_dependencies:
   flutter_test:

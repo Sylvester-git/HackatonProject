@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:sqaure_project/buisness/LoginCubit/logn_cubit.dart';
-import 'package:sqaure_project/buisness/bloc/auth_bloc.dart';
+import '../buisness/AuthBloc/auth_bloc.dart';
 import 'package:sqaure_project/buisness/signUpCubit/sign_up_cubit.dart';
 import 'package:sqaure_project/packages.dart';
 

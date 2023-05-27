@@ -1,4 +1,3 @@
-import 'package:sqaure_project/buisness/bloc/auth_bloc.dart';
 
 import '../../packages.dart';
 import '../screen/screenExports.dart';
@@ -18,6 +17,14 @@ class RouteManagerclass {
         builder: (context, state) {
           return const HomeScreen();
         },
+        routes: [
+          GoRoute(
+            path: 'feed',
+            builder: (context, state) {
+              return const FeedPage();
+            },
+          ),
+        ],
       ),
     ],
   );

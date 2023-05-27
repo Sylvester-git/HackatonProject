@@ -1,6 +1,6 @@
 {
     "name": "sqaure_project",
-    "short_name": "sqaure_project",
+    "short_name": "sqaureproject",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
