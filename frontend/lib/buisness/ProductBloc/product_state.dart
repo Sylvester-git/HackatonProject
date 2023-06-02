@@ -11,7 +11,7 @@ abstract class ProductState extends Equatable {
 class ProductInitial extends ProductState {}
 
 class ProductLoaded extends ProductState {
-  final ProductModel productModel;
+  final List<ProductModel> productModel;
   const ProductLoaded({
     required this.productModel,
   });
@@ -22,9 +22,7 @@ class ProductLoaded extends ProductState {
       ];
 }
 
-class ProductLoading extends ProductState {
-  
-}
+class ProductLoading extends ProductState {}
 
 class ProductError extends ProductState {
   final String errorMessage;
@@ -35,5 +33,16 @@ class ProductError extends ProductState {
   @override
   List<Object> get props => [
         errorMessage,
+      ];
+}
+
+class LoadSingleProduct extends ProductState {
+  final ProductModel product;
+  const LoadSingleProduct({
+    required this.product,
+  });
+   @override
+  List<Object> get props => [
+        product,
       ];
 }

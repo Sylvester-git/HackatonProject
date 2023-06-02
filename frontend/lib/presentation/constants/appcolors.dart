@@ -6,4 +6,6 @@ class Appcolors {
   static const secondaryColor = '#FFFFFF';
   static const overlaycolor = Color(0x42FFFFFF);
   static const itemcardcolor = '#393B48';
+  static const counterButtonBackgroud = '#DEDEDE';
+  static const priceValueMultiplier = '#51307D';
 }

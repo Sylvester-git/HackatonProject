@@ -10,25 +10,54 @@ part 'product_state.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitial()) {
     final ProductApiRepository _productApiRepository = ProductApiRepository();
-    on<GetProductList>((event, emit) async {
-      try {
-        emit(ProductLoading());
-        final productList = await _productApiRepository.fetchProductList();
-        emit(ProductLoaded(productModel: productList));
-        if (productList.error != null) {
+    on<GetProductList>(
+      (event, emit) async {
+        try {
+          emit(ProductLoading());
+          final productList = await _productApiRepository.fetchProductList();
+          emit(ProductLoaded(productModel: productList));
+        } catch (e) {
           emit(
             ProductError(
-              errorMessage: productList.error.toString(),
+              errorMessage: e.toString(),
             ),
           );
         }
-      } catch (e) {
-        emit(
-          ProductError(
-            errorMessage: e.toString(),
-          ),
-        );
-      }
-    });
+      },
+    );
+
+    on<GetLimitedProductList>(
+      (event, emit) async {
+        try {
+          emit(ProductLoading());
+          final productlist =
+              await _productApiRepository.fetchLimitedProductList(event.value);
+          emit(ProductLoaded(productModel: productlist));
+        } catch (e) {
+          emit(
+            ProductError(
+              errorMessage: e.toString(),
+            ),
+          );
+        }
+      },
+    );
+
+    on<GetSingleproduct>(
+      (event, emit) async {
+        try {
+          emit(ProductLoading());
+          final product =
+              await _productApiRepository.fetchSingleProduct(event.value);
+          emit(LoadSingleProduct(product: product));
+        } catch (e) {
+          emit(
+            ProductError(
+              errorMessage: e.toString(),
+            ),
+          );
+        }
+      },
+    );
   }
 }

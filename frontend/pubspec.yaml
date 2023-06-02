@@ -44,7 +44,8 @@ dependencies:
   cloud_firestore: 
   url_strategy: ^0.2.0
   flutter_multi_formatter: ^2.11.1
-  dio: 
+  http: 
+  another_square: ^0.0.5
 
 dev_dependencies:
   flutter_test:

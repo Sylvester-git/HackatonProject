@@ -7,4 +7,4 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:url_strategy/url_strategy.dart';
 export 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-export 'package:dio/dio.dart';
+

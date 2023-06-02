@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:sqaure_project/buisness/ProductBloc/product_bloc.dart';
+import 'package:sqaure_project/data/resources/square-api-provider.dart';
+import 'package:sqaure_project/data/resources/squareapiwiithoutpackage.dart';
 import 'package:sqaure_project/packages.dart';
 
 import 'package:sqaure_project/presentation/constants/appcolors.dart';
 
 import 'package:sqaure_project/presentation/services/colorConverter.dart';
 import 'package:sqaure_project/presentation/widgets/widgetExports.dart';
+
+import '../widgets/productHomeOverViewCard.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +20,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isHoveringonfeed = false;
+  final String dummytext =
+      'Immerse yourself in a world of stunning sound quality with AirPods Max, featuring high-fidelity audio and adaptive EQ for an unparalleled listening experience.';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,7 +146,36 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Container(
                 color: Colors.amber,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 height: MediaQuery.of(context).size.height,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //first section
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 550,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                            color: Appcolors.itemcardcolor.toColor(),
+                          ),
+                          child: const CustomInitCardForHomeScreen(),
+                        ),
+                      ],
+                    ),
+                    //second section
+                    Column(),
+                  ],
+                ),
               ),
             ),
           ],

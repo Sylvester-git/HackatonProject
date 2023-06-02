@@ -5,7 +5,22 @@ import '../../packages.dart';
 import '../constants/appcolors.dart';
 
 class FeedCard extends StatelessWidget {
-  const FeedCard({super.key});
+  const FeedCard({
+    super.key,
+    this.itemname,
+    this.rating,
+    this.price,
+    this.imageurl,
+    this.id,
+    this.category,
+  });
+
+  final String? itemname;
+  final double? rating;
+  final double? price;
+  final String? imageurl;
+  final int? id;
+  final String? category;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +41,13 @@ class FeedCard extends StatelessWidget {
                 color: Appcolors.secondaryColor.toColor(),
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
-              child: const Center(child: Text('Item image')),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                child: Image.network(
+                  imageurl.toString(),
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,7 +62,7 @@ class FeedCard extends StatelessWidget {
                     vertical: 5,
                   ),
                   child: Text(
-                    'Item name',
+                    itemname ?? 'item',
                     maxLines: 1,
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
@@ -56,7 +77,7 @@ class FeedCard extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 5),
                   child: Wrap(
                     children: List.generate(
-                      5,
+                      rating!.floor(),
                       (index) => Icon(
                         Icons.star_rate_rounded,
                         color: Appcolors.primaryColor.toColor(),
@@ -87,9 +108,9 @@ class FeedCard extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: '${2000}'.toCurrencyString(
-                              mantissaLength: 0,
-                              leadingSymbol: 'N',
+                            text: '${price ?? 2000}'.toCurrencyString(
+                              mantissaLength: 2,
+                              leadingSymbol: '\$',
                             ),
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w400,
@@ -125,8 +146,8 @@ class FeedCard extends StatelessWidget {
                               width: 10,
                             ),
                             Text(
-                              '${2000}'.toCurrencyString(
-                                mantissaLength: 0,
+                              '${25 * price!.toInt()}'.toCurrencyString(
+                                mantissaLength: 1,
                                 shorteningPolicy: ShorteningPolicy.Automatic,
                               ),
                               style: GoogleFonts.montserratAlternates(
@@ -137,7 +158,7 @@ class FeedCard extends StatelessWidget {
                             )
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                   MouseRegion(
